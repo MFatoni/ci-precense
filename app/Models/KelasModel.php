@@ -13,11 +13,13 @@ class KelasModel extends Model
                         ->select('kelas.kelas_nama, kelas.kelas_id, count(mahasiswa.mahasiswa_id) as total')
                         ->join('mahasiswa', 'mahasiswa.kelas_id = kelas.kelas_id','left')
                         ->groupBy("kelas.kelas_id")
+                        ->orderBy('kelas.kelas_id')
                         ->get()
                         ->getResultArray();
         } else {
             return $this->table('kelas')
                         ->where('kelas_id', $id)
+                        ->orderBy('kelas_id')
                         ->get()
                         ->getRowArray();
         }   

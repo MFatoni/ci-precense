@@ -2,7 +2,21 @@
 
 @import url("https://use.fontawesome.com/releases/v5.0.11/css/all.css");
 
-.Button {
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.h-50 {
+    height: 50px !important;
+}
+
+a.link-unstyled-light, a.link-unstyled-light:hover {
+    text-decoration: none !important;
+    color: white;
+}
+
+.button {
 	height: 50px;
 	position: relative;
 	background: #ccc;
@@ -134,6 +148,7 @@
     color: #000;
     width: 40px;
     text-align: center;
+    border-radius: 2px;
   }
   .brand {
     text-align: left !important;
@@ -149,17 +164,4 @@
   .content {
       margin-left: 250px;
   }
-}
-body {
-  margin: 0px;
-  padding: 0px;
-}
-
-.h-50 {
-    height: 50px !important;
-}
-
-a.link-unstyled-light, a.link-unstyled-light:hover {
-    text-decoration: none !important;
-    color: white;
 }

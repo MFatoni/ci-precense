@@ -8,30 +8,23 @@ Data Kelas
 
   <?php
   if (!empty(session()->getFlashdata('success'))) { ?>
-
     <div class="alert alert-success">
       <?php echo session()->getFlashdata('success'); ?>
     </div>
-
   <?php } ?>
   <?php if (!empty(session()->getFlashdata('info'))) { ?>
-
     <div class="alert alert-info">
       <?php echo session()->getFlashdata('info'); ?>
     </div>
-
   <?php } ?>
-
   <?php if (!empty(session()->getFlashdata('warning'))) { ?>
-
     <div class="alert alert-warning">
       <?php echo session()->getFlashdata('warning'); ?>
     </div>
-
   <?php } ?>
   <div class="float-right">
     <a href="<?= route_to('admin_form_add_data_kelas') ?>">
-      <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#exampleModalCenter">
+      <button type="button" class="btn btn-success mb-3">
         Tambah Data Kelas
       </button>
     </a>
@@ -52,7 +45,7 @@ Data Kelas
       $dataPoints = [];
       $i = 0;
       foreach ($kelas as $key => $data) {
-        if ($i < 5) {
+        if ($i < 20) {
           array_push($dataPoints, (object)[
             'y' => $data['total'],
             'label' => $data['kelas_nama'],
@@ -85,7 +78,6 @@ Data Kelas
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
   window.onload = function() {
-
     var chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
       title: {
@@ -95,7 +87,7 @@ Data Kelas
         includeZero: true,
       },
       data: [{
-        type: "bar",
+        type: "column",
         indexLabel: "{y}",
         indexLabelPlacement: "inside",
         indexLabelFontWeight: "bolder",
@@ -104,7 +96,6 @@ Data Kelas
       }]
     });
     chart.render();
-
   }
 </script>
 <?= $this->endSection() ?>

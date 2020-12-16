@@ -5,11 +5,11 @@ Input Data Kelas
 <?= $this->section('content') ?>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-6">
+    <div class="col-sm-12 col-md-6">
       <form action="<?php echo route_to('admin_add_data_kelas'); ?>" method="post">
         <div class="form-group">
           <label>Nama Kelas</label>
-          <input type="text" class="form-control" name="kelas_nama">
+          <input type="text" class="form-control" name="kelas_nama" required>
         </div>
         <button type="submit" class="btn btn-success">Tambah Data</button>
       </form>
