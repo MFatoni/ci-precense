@@ -37,7 +37,7 @@ class Mahasiswa extends BaseController
 
         $simpan = $this->mahasiswa->insertMahasiswa($data);
         if ($simpan) {
-            session()->setFlashdata('success', 'Created product successfully');
+            session()->setFlashdata('success', 'Berhasil menambahkan data');
             return redirect()->route('admin_data_mahasiswa', [$kelasId]);
         }
     }
@@ -60,7 +60,7 @@ class Mahasiswa extends BaseController
         ];
         $ubah = $this->mahasiswa->updateMahasiswa($data, $mahasiswaId);
         if ($ubah) {
-            session()->setFlashdata('info', 'Updated product successfully');
+            session()->setFlashdata('info', 'Berhasil mengubah data');
             return redirect()->route('admin_data_mahasiswa', [$kelasId]);
         }
     }
@@ -70,7 +70,7 @@ class Mahasiswa extends BaseController
         $hapusKehadiran = $this->kehadiran->deleteKehadiranByMahasiswa($id);
         $hapusMahasiswa = $this->mahasiswa->deleteMahasiswa($id);
         if ($hapusKehadiran && $hapusMahasiswa) {
-            session()->setFlashdata('warning', 'Deleted product successfully');
+            session()->setFlashdata('warning', 'Berhasil menghapus data');
             return redirect()->route('admin_data_mahasiswa', [$kelasId]);
         }
     }

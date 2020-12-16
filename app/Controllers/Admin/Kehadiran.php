@@ -51,7 +51,7 @@ class Kehadiran extends BaseController
         $dataKehadiran = $this->request->getPost('kehadiran');
         $simpan = $this->kehadiran->updateKehadiran($dataKehadiran, $data['kelas_id'], $data['tanggal']);
         if ($simpan) {
-            session()->setFlashdata('success', 'Created product successfully');
+            session()->setFlashdata('success', 'Berhasil memasukkan data');
             return redirect()->route('admin_data_kehadiran', [$data['kelas_id']]);
         }
     }
@@ -60,7 +60,7 @@ class Kehadiran extends BaseController
     {
         $hapus = $this->kehadiran->deleteKehadiran($kelasId, $tanggal);
         if ($hapus) {
-            session()->setFlashdata('warning', 'Deleted product successfully');
+            session()->setFlashdata('warning', 'Berhasil menghapus data');
             return redirect()->route('admin_data_kehadiran', [$kelasId]);
         }
     }

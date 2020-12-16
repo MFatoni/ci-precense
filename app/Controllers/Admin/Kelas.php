@@ -34,7 +34,7 @@ class Kelas extends BaseController
         ];
         $simpan = $this->kelas->insertKelas($data);
         if ($simpan) {
-            session()->setFlashdata('success', 'Created product successfully');
+            session()->setFlashdata('success', 'Berhasil menambah data');
             return redirect()->route('admin_data_kelas');
         }
     }
@@ -55,7 +55,7 @@ class Kelas extends BaseController
         ];
         $ubah = $this->kelas->updateKelas($data, $id);
         if ($ubah) {
-            session()->setFlashdata('info', 'Updated product successfully');
+            session()->setFlashdata('info', 'Berhasil mengubah data');
             return redirect()->route('admin_data_kelas');
         }
     }
@@ -67,7 +67,7 @@ class Kelas extends BaseController
         $hapusKelas = $this->kelas->deleteKelas($id);
         if($hapusKelas && $hapusKehadiranByKelas && $hapusMahasiswaByKelas)
         {
-            session()->setFlashdata('warning', 'Deleted product successfully');
+            session()->setFlashdata('warning', 'Berhasil menghapus data');
             return redirect()->route('admin_data_kelas');
         }
     } 
