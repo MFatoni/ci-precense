@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
@@ -36,6 +38,6 @@ class Filters extends BaseConfig
 	// that they should run on, like:
 	//    'isLoggedIn' => ['before' => ['account/*', 'profiles/*']],
 	public $filters = [
-		'login' => ['before' => ['dashboard','dashboard/*']],
+		'login' => ['before' => ['dashboard', 'dashboard/*']],
 	];
 }

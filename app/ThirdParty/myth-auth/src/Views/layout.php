@@ -12,19 +12,19 @@
     <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        body {
-            padding-top: 5rem;
-        }
-    </style>
+		body,
+		html {
+			height: 100vh;
+		}
+	</style>
     
     <?= $this->renderSection('pageStyles') ?>
 </head>
 
 <body>
 
-<?= view('Myth\Auth\Views\_navbar') ?>
 
-<main role="main" class="container">
+<main class="h-100 d-flex align-items-center justify-content-center">
 	<?= $this->renderSection('main') ?>
 </main><!-- /.container -->
 

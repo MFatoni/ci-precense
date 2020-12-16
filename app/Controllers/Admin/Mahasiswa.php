@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Controllers\Admin;
+
+use App\Controllers\BaseController;
+use App\Models\MahasiswaModel;
+use App\Models\KehadiranModel;
+
+class Mahasiswa extends BaseController
+{
+    public function __construct()
+    {
+        $this->mahasiswa = new MahasiswaModel();
+        $this->kehadiran = new KehadiranModel();
+    }
+    public function index($id)
+    {
+        $data['kelas_id'] = $id;
+        $data['mahasiswa'] = $this->mahasiswa->getMahasiswa($id);
+        return view('admin/mahasiswa/index', $data);
+    }
+
+    public function formAdd($id)
+    {
+        $data['kelas_id'] = $id;
+        return view('admin/mahasiswa/form_add', $data);
+    }
+
+    public function store()
+    {
+        $mahasiswaNama = $this->request->getPost('mahasiswa_nama');
+        $kelasId = $this->request->getPost('kelas_id');
+        $data = [
+            'mahasiswa_nama' => $mahasiswaNama,
+            'kelas_id' => $kelasId,
+        ];
+
+        $simpan = $this->mahasiswa->insertMahasiswa($data);
+        if ($simpan) {
+            session()->setFlashdata('success', 'Created product successfully');
+            return redirect()->route('admin_data_mahasiswa', [$kelasId]);
+        }
+    }
+
+
+    public function formUpdate($id)
+    {
+        $data = $this->mahasiswa->getMahasiswa($id);
+        return view('admin/mahasiswa/form_update', $data);
+    }
+
+    public function update()
+    {
+        $mahasiswaId = $this->request->getPost('mahasiswa_id');
+        $mahasiswaNama = $this->request->getPost('mahasiswa_nama');
+        $kelasId = $this->request->getPost('kelas_id');
+        $data = [
+            'mahasiswa_nama' => $mahasiswaNama,
+            'kelas_id' => $kelasId,
+        ];
+        $ubah = $this->mahasiswa->updateMahasiswa($data, $mahasiswaId);
+        if ($ubah) {
+            session()->setFlashdata('info', 'Updated product successfully');
+            return redirect()->route('admin_data_mahasiswa', [$kelasId]);
+        }
+    }
+
+    public function delete($kelasId, $id)
+    {
+        $hapusKehadiran = $this->kehadiran->deleteKehadiranByMahasiswa($id);
+        $hapusMahasiswa = $this->mahasiswa->deleteMahasiswa($id);
+        if ($hapusKehadiran && $hapusMahasiswa) {
+            session()->setFlashdata('warning', 'Deleted product successfully');
+            return redirect()->route('admin_data_mahasiswa', [$kelasId]);
+        }
+    }
+}

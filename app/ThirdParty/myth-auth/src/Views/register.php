@@ -6,7 +6,7 @@
         <div class="col-sm-6 offset-sm-3">
 
             <div class="card">
-                <h2 class="card-header"><?=lang('Auth.register')?></h2>
+                <h2 class="card-header text-center"><?=lang('Auth.register')?></h2>
                 <div class="card-body">
 
                     <?= view('Myth\Auth\Views\_message_block') ?>
@@ -38,7 +38,7 @@
 
                         <br>
 
-                        <button type="submit" class="btn btn-primary btn-block"><?=lang('Auth.register')?></button>
+                        <button type="submit" class="btn btn-dark btn-block"><?=lang('Auth.register')?></button>
                     </form>
 
 
