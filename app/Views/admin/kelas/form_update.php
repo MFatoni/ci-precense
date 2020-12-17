@@ -12,7 +12,7 @@ Edit Data Kelas
           <label>Nama Kelas</label>
           <input type="text" class="form-control" name="kelas_nama" value="<?php echo $kelas_nama; ?>" required>
         </div>
-        <button type="submit" class="btn btn-success">Tambah Data</button>
+        <button type="submit" class="btn btn-success">Ubah Data</button>
       </form>
     </div>
   </div>

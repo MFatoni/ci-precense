@@ -25,22 +25,28 @@ class Kehadiran extends BaseController
         $data['kelas_id'] = $this->request->getPost('kelas_id');
         $data['tanggal'] = $this->request->getPost('tanggal');
         $data['kehadiran'] = $this->mahasiswa->getMahasiswaPerKelas($data['kelas_id']);
-        foreach ($data['kehadiran'] as $value) {
-            $dataKehadiran = [
-                'mahasiswa_id' => $value['mahasiswa_id'],
-                'kelas_id' => $value['kelas_id'],
-                'tanggal' => $data['tanggal'],
-            ];
-            $this->kehadiran->insertKehadiran($dataKehadiran);
+        $cekTanggalKehadiran =  $this->kehadiran->cekTanggalKehadiran($data['tanggal']);
+        if ($cekTanggalKehadiran) {
+            session()->setFlashdata('warning', 'Data pada tanggal tersebut telah diinput');
+            return redirect()->route('admin_data_kehadiran', [$data['kelas_id']]);
+        } else {
+            foreach ($data['kehadiran'] as $value) {
+                $dataKehadiran = [
+                    'mahasiswa_id' => $value['mahasiswa_id'],
+                    'kelas_id' => $value['kelas_id'],
+                    'tanggal' => $data['tanggal'],
+                ];
+                $this->kehadiran->insertKehadiran($dataKehadiran);
+            }
+            return redirect()->route('admin_form_update_data_kehadiran', [$data['kelas_id'], $data['tanggal']]);
         }
-        return redirect()->route('admin_form_update_data_kehadiran', [$data['kelas_id'], $data['tanggal']]);
     }
 
-    public function formUpdate($kelasId,$tanggal)
+    public function formUpdate($kelasId, $tanggal)
     {
         $data['kelas_id'] = $kelasId;
         $data['tanggal'] = $tanggal;
-        $data['kehadiran'] = $this->kehadiran->getKehadiranPerKelasTanggal($kelasId,$tanggal);
+        $data['kehadiran'] = $this->kehadiran->getKehadiranPerKelasTanggal($kelasId, $tanggal);
         return view('admin/kehadiran/form_update', $data);
     }
 

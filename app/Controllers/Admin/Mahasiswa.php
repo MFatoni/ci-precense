@@ -16,7 +16,7 @@ class Mahasiswa extends BaseController
     public function index($id)
     {
         $data['kelas_id'] = $id;
-        $data['mahasiswa'] = $this->mahasiswa->getMahasiswa($id);
+        $data['mahasiswa'] = $this->mahasiswa->getMahasiswaPerKelas($id);
         return view('admin/mahasiswa/index', $data);
     }
 
@@ -43,9 +43,10 @@ class Mahasiswa extends BaseController
     }
 
 
-    public function formUpdate($id)
+    public function formUpdate($kelasId, $mahasiswaId)
     {
-        $data = $this->mahasiswa->getMahasiswa($id);
+        $data['kelas_id'] = $kelasId;
+        $data['mahasiswa'] = $this->mahasiswa->getMahasiswa($mahasiswaId);
         return view('admin/mahasiswa/form_update', $data);
     }
 

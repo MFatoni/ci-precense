@@ -16,7 +16,7 @@ class MahasiswaModel extends Model
                 ->getResultArray();
         } else {
             return $this->table('mahasiswa')
-                ->where('kelas_id', $id)
+                ->where('mahasiswa_id', $id)
                 ->get()
                 ->getResultArray();
         }

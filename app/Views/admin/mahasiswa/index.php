@@ -28,7 +28,7 @@ Data Mahasiswa
     </a>
   </div>
   <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-dark text-center">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Mahasiswa</th>
@@ -39,11 +39,11 @@ Data Mahasiswa
       <?php
       foreach ($mahasiswa as $key => $data) { ?>
         <tr>
-          <td><?php echo $key + 1; ?></td>
+          <td class="text-center"><?php echo $key + 1; ?></td>
           <td><?php echo $data['mahasiswa_nama']; ?></td>
-          <td>
+          <td class="text-center">
             <div class="btn-group">
-              <a href="<?= route_to('admin_form_update_data_mahasiswa', $data['mahasiswa_id']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>&ensp;
+              <a href="<?= route_to('admin_form_update_data_mahasiswa', $data['kelas_id'], $data['mahasiswa_id']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>&ensp;
               <a href="<?= route_to('admin_delete_data_mahasiswa', $data['kelas_id'], $data['mahasiswa_id']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
             </div>
           </td>

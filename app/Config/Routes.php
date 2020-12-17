@@ -46,7 +46,7 @@ $routes->group('dashboard', function ($routes) {
 		$routes->get('(:num)', 'Admin\Mahasiswa::index/$1', ['as' => 'admin_data_mahasiswa']);
 		$routes->get('(:num)/form', 'Admin\Mahasiswa::formAdd/$1', ['as' => 'admin_form_add_data_mahasiswa']);
 		$routes->post('store', 'Admin\Mahasiswa::store', ['as' => 'admin_add_data_mahasiswa']);
-		$routes->get('form/(:num)', 'Admin\Mahasiswa::formUpdate/$1', ['as' => 'admin_form_update_data_mahasiswa']);
+		$routes->get('form/(:num)/(:num)', 'Admin\Mahasiswa::formUpdate/$1/$2', ['as' => 'admin_form_update_data_mahasiswa']);
 		$routes->post('update', 'Admin\Mahasiswa::update', ['as' => 'admin_update_data_mahasiswa']);
 		$routes->get('delete/(:num)/(:num)', 'Admin\Mahasiswa::delete/$1/$2', ['as' => 'admin_delete_data_mahasiswa']);
 	});
@@ -57,6 +57,7 @@ $routes->group('dashboard', function ($routes) {
 		$routes->get('form/(:num)/(:any)', 'Admin\Kehadiran::formUpdate/$1/$2', ['as' => 'admin_form_update_data_kehadiran']);
 		$routes->post('update', 'Admin\Kehadiran::update', ['as' => 'admin_update_data_kehadiran']);
 		$routes->get('delete/(:num)/(:any)', 'Admin\Kehadiran::delete/$1/$2', ['as' => 'admin_delete_data_kehadiran']);
+		$routes->get('export/(:num)/(:any)', 'Admin\Export::download/$1/$2', ['as' => 'admin_export_data_kehadiran']);
 	});
 });
 

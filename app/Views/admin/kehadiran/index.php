@@ -55,15 +55,16 @@ Data Kehadiran
     </div>
   </div>
   <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-dark text-center">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Tanggal</th>
         <th scope="col">Jumlah Yang Hadir</th>
+        <th scope="col">File Excel</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
       <?php
       $dataPoints = [];
       $i = 0;
@@ -80,6 +81,7 @@ Data Kehadiran
           <td><?php echo $key + 1; ?></td>
           <td><?php echo $data['tanggal']; ?></td>
           <td><?php echo $data['total']; ?></td>
+          <td><a href="<?= route_to('admin_export_data_kehadiran', $data['kelas_id'], $data['tanggal']) ?>">Download</td>
           <td>
             <div class="btn-group">
               <a href="<?= route_to('admin_form_update_data_kehadiran', $data['kelas_id'], $data['tanggal']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>&ensp;

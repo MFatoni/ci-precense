@@ -30,7 +30,7 @@ Data Kelas
     </a>
   </div>
   <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-dark text-center">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Kelas</th>
@@ -40,7 +40,7 @@ Data Kelas
         <th scope="col">Aksi</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
       <?php
       $dataPoints = [];
       $i = 0;

@@ -5,11 +5,13 @@ Input Data Kehadiran
 <?= $this->section('content') ?>
 <div class="container-fluid">
   <form action="<?php echo route_to('admin_update_data_kehadiran'); ?>" method="post">
-    <button type="submit" class="btn btn-success mb-3">
-      Input Kehadiran Baru
-    </button>
+    <div class="float-right">
+      <button type="submit" class="btn btn-success mb-3">
+        Input Kehadiran Baru
+      </button>
+    </div>
     <table class="table">
-      <thead class="thead-dark">
+      <thead class="thead-dark text-center">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nama</th>
@@ -17,7 +19,7 @@ Input Data Kehadiran
           <th scope="col">Hadir</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="text-center">
         <?php
         foreach ($kehadiran as $key => $data) { ?>
           <tr>

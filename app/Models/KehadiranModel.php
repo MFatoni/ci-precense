@@ -24,6 +24,20 @@ class KehadiranModel extends Model
                 ->getResultArray();
         }
     }
+    public function cekTanggalKehadiran($tanggal)
+    {
+        $data = $this->table('kehadiran')
+            ->select('tanggal')
+            ->where('tanggal', $tanggal)
+            ->get()
+            ->getResultArray();
+        if (!empty($data)) {
+            $status = true;
+        } else {
+            $status = false;
+        }
+        return $status;
+    }
     public function insertKehadiran($data)
     {
         return $this->db->table($this->table)->insert($data);
@@ -31,7 +45,7 @@ class KehadiranModel extends Model
     public function getKehadiranPerKelasTanggal($kelasId, $tanggal)
     {
         return $this->table('Kehadiran')
-            ->join('mahasiswa', 'mahasiswa.mahasiswa_id = kehadiran.mahasiswa_id','left')
+            ->join('mahasiswa', 'mahasiswa.mahasiswa_id = kehadiran.mahasiswa_id', 'left')
             ->where('mahasiswa.kelas_id', $kelasId)
             ->where('tanggal', $tanggal)
             ->get()
@@ -41,7 +55,7 @@ class KehadiranModel extends Model
     {
         $hadir = ['status' => true];
         $tidakHadir = ['status' => false];
-        if(!empty($data)){
+        if (!empty($data)) {
             $query1 = $this->db->table($this->table)
                 ->where('kelas_id', $kelasId)
                 ->where('tanggal', $tanggal)
