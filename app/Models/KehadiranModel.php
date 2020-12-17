@@ -24,10 +24,11 @@ class KehadiranModel extends Model
                 ->getResultArray();
         }
     }
-    public function cekTanggalKehadiran($tanggal)
+    public function cekTanggalKehadiran($kelasId, $tanggal)
     {
         $data = $this->table('kehadiran')
             ->select('tanggal')
+            ->where('kelas_id', $kelasId)
             ->where('tanggal', $tanggal)
             ->get()
             ->getResultArray();

@@ -25,7 +25,7 @@ class Kehadiran extends BaseController
         $data['kelas_id'] = $this->request->getPost('kelas_id');
         $data['tanggal'] = $this->request->getPost('tanggal');
         $data['kehadiran'] = $this->mahasiswa->getMahasiswaPerKelas($data['kelas_id']);
-        $cekTanggalKehadiran =  $this->kehadiran->cekTanggalKehadiran($data['tanggal']);
+        $cekTanggalKehadiran =  $this->kehadiran->cekTanggalKehadiran($data['kelas_id'], $data['tanggal']);
         if ($cekTanggalKehadiran) {
             session()->setFlashdata('warning', 'Data pada tanggal tersebut telah diinput');
             return redirect()->route('admin_data_kehadiran', [$data['kelas_id']]);
